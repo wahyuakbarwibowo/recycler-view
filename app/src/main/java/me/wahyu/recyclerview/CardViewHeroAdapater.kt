@@ -31,9 +31,15 @@ class CardViewHeroAdapater(private val listHero: ArrayList<Hero>) : RecyclerView
         holder.tvName.text = hero.name
         holder.tvDetail.text = hero.detail
 
-        holder.btnFavorite.setOnClickListener {Toast.makeText(holder.itemView.context, "Favorite " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show() }
-        holder.btnShare.setOnClickListener { Toast.makeText(holder.itemView.context, "Share " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show() }
-        holder.itemView.setOnClickListener { Toast.makeText(holder.itemView.context, "Kamu memilih " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show() }
+        holder.btnFavorite.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "Favorite " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show()
+        }
+        holder.btnShare.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "Share " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show()
+        }
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "Kamu memilih " + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show()
+        }
 
     }
 
