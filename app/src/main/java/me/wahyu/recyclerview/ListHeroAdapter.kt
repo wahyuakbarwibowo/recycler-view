@@ -1,24 +1,36 @@
 package me.wahyu.recyclerview
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
-class ListHeroAdapter : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
+class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        TODO("Not yet implemented")
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_hero, parent, false)
+        return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val hero = listHero[position]
+
+        Glide.with(holder.itemView.context)
+            .load(hero.photo)
+            .apply(RequestOptions().override(55, 55))
+            .into(holder.imgPhoto)
+
+        holder.tvName.text = hero.name
+        holder.tvDetail.text = hero.detail
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return listHero.size
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
